@@ -1,3 +1,42 @@
+/**
+ * getWaveScores.js
+ *
+ * Description:
+ * -------------
+ * This script automates accessibility testing of multiple web pages using the WAVE Chrome extension.
+ * It reads a list of URLs from a text file (default: urls.txt), opens each URL in a Puppeteer-controlled
+ * browser with the WAVE extension preloaded, extracts the number of accessibility errors from the WAVE
+ * sidebar (injected into the page after activation), and prints a CSV-formatted list of results to standard output.
+ *
+ * Important:
+ * -------------
+ * The WAVE extension **must be activated manually** on each page after it loads. The user must click
+ * the WAVE toolbar icon or use the keyboard shortcut (e.g., Cmd/Ctrl + Shift + U) to trigger the analysis.
+ * This limitation exists because browser extensions cannot be programmatically triggered via Puppeteer.
+ *
+ * Usage:
+ * ------
+ *   node getWaveScores.js [optional_path_to_urls.txt]
+ *
+ * Output:
+ * -------
+ *   URL,WAVE_Errors
+ *   https://example.com,5
+ *   https://another.com,ERROR
+ *
+ * Notes:
+ * ------
+ * - Requires an unpacked copy of the WAVE Chrome extension.
+ * - Uses a helper shell script (findWaveExtension.sh) to locate the WAVE extension directory.
+ * - Runs in non-headless mode because Chrome extensions are not supported in headless mode.
+ *
+ * License:
+ * --------
+ * This code is released under the MIT License on July 21, 2025 by Zoltan Hawryluk.
+ */
+
+
+
 const puppeteer = require('puppeteer');
 const { execSync } = require('child_process');
 const fs = require('fs');

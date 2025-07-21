@@ -1,12 +1,39 @@
 #!/usr/bin/env node
 /**
- * Run Lighthouse accessibility audits for a list of URLs (one per line in a text file)
- * using a single long-lived Chrome instance for better performance.
+ * getLighthouseScores.js
+ *
+ * Description:
+ * -------------
+ * This script runs Lighthouse accessibility audits on a list of URLs using a single
+ * long-lived headless Chrome instance for improved performance. It reads URLs from a
+ * text file (default: urls.txt), tests each one sequentially, and prints the results
+ * as a CSV-formatted list to standard output.
+ *
+ * For each URL, the script outputs the URL and its Lighthouse accessibility score
+ * (0–100). If an error occurs during the audit, the score will be reported as "ERROR".
  *
  * Usage:
+ * ------
  *   node getLighthouseScores.js urls.txt > lighthouse_scores.csv
  *
- * CSV output header is written automatically.
+ * Output:
+ * -------
+ *   URL,Accessibility_Score
+ *   https://example.com,92
+ *   https://broken-link.com,ERROR
+ *
+ * Notes:
+ * ------
+ * - Uses Lighthouse programmatically with chrome-launcher for speed and control.
+ * - Runs in desktop mode (not mobile emulation).
+ * - Requires Node.js and the following npm packages:
+ *     - lighthouse
+ *     - chrome-launcher
+ * - Headless Chrome must be available on your system.
+ *
+ * License:
+ * --------
+ * This code is released under the MIT License on July 21, 2025 by Zoltan Hawryluk.
  */
 
 const fs = require('fs');

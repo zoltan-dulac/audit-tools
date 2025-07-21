@@ -1,4 +1,40 @@
 #!/bin/bash
+#
+# findWaveExtension.sh
+#
+# Description:
+# -------------
+# This script locates the path of the unpacked WAVE Chrome extension on the local system.
+# It identifies the user's operating system, checks common Chrome extension directories for the
+# WAVE extension ID, and returns the path to the latest version of the extension.
+#
+# This path is used by other scripts (e.g., getWaveScores.js) to load the WAVE extension into a
+# Puppeteer-controlled Chrome instance for accessibility testing.
+#
+# Supported Platforms:
+# --------------------
+# - macOS
+# - Linux
+# - Windows (via Git Bash, MSYS, or Cygwin)
+#
+# Usage:
+# ------
+#   ./findWaveExtension.sh
+#
+# Output:
+# -------
+#   /full/path/to/wave/extension/version/
+#
+# Notes:
+# ------
+# - This script assumes the WAVE extension has already been installed in Chrome.
+# - It searches the Chrome "Default" profile only.
+# - If the extension isn't found, the script exits with an error.
+#
+# License:
+# --------
+# This code is released under the MIT License on July 21, 2025 by Zoltan Hawryluk.
+#
 
 # WAVE extension ID (constant)
 WAVE_ID="jbbplnpkjmmeebjpijfedlgcdilocofh"
